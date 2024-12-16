@@ -1,0 +1,30 @@
+<template>
+  <Line 
+    :data="chartData"
+    :options="chartOptions"
+  />
+</template>
+
+<script>
+  import { Line } from 'vue-chartjs';
+  import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
+
+  ChartJS.register( CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
+
+  export default {
+    name: 'LineChart',
+    components: {
+      Line
+    },
+    props: {
+      chartData: Map
+    },
+    data() {
+      return {
+      chartOptions: {
+        responsive: true,
+      }
+    }
+    }
+  }
+</script>
