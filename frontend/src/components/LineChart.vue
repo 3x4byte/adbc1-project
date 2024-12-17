@@ -17,14 +17,9 @@
       Line
     },
     props: {
-      chartData: Map
-    },
-    data() {
-      return {
-      chartOptions: {
-        responsive: true,
-      }
+      chartData: Map,
+      chartOptions: Map
     }
-    }
+    
   }
 </script>
