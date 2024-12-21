@@ -7,11 +7,19 @@
   font-weight: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.v-select{
+  --vs-controls-color: var(--color-text);
+  --vs-border-color: var(--color-border);
+
+  --vs-dropdown-bg: var(--color-background-soft);
+  --vs-dropdown-option-color: var(--color-text);
+
+  --vs-selected-color: var(--color-text);
+
+  --vs-search-input-color: var(--color-text);
+
+  --vs-dropdown-option--active-bg: var(--color-background-mute);
+  --vs-dropdown-option--active-color: var(--color-heading);
+  
 }
 
