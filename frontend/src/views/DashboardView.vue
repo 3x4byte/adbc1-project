@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <h1>Willkommen im Dashboard!</h1>
-    <button @click="logout">Abmelden</button>
-    <div class="container-vertical">
-      <VueDatePicker v-model="dateRange" range time-picker-inline :dark="useDarkTheme"/>
-      <v-select v-model="selectedEsp" :options="availableEsps" />
-    </div>
-    <br>
-    <LineChart :chart-data="clone(chartData)"/>
-  </div>
+  <CoreLayout>
+    <template #default>
+      <h1>Dashboard</h1>
+      <br>
+      <div class="container-vertical">
+        <VueDatePicker v-model="dateRange" range time-picker-inline :dark="useDarkTheme"/>
+        <v-select v-model="selectedEsp" :options="availableEsps" />
+      </div>
+      <LineChart :chart-data="clone(chartData)"/>
+    </template>
+  </CoreLayout>
 </template>
 
 <script>
 import rfdc from 'rfdc';
 
+import CoreLayout from '@/components/CoreLayout.vue';
 import LineChart from '@/components/LineChart.vue';
 
 import VueDatePicker from '@vuepic/vue-datepicker';
@@ -24,6 +26,7 @@ import 'vue-select/dist/vue-select.css';
 export default {
   name: 'ChartView',
   components: {
+    CoreLayout,
     LineChart,
     VueDatePicker,
     VSelect,
@@ -138,11 +141,6 @@ export default {
       }
         
     },
-
-    async logout() {
-      await this.$pb.authStore.clear()
-      this.$router.push('/login'); // Weiterleiten
-    }
 
   },
   watch: {
