@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue';
 import DashboardView from '@/views/DashboardView.vue';
 import LogoutView from '@/views/LogoutView.vue';
+import CompareView from '@/views/CompareView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/dashboard',
       component: DashboardView,
       meta: { requiresAuth: true }, // only signed in users can access
+    },
+    {
+      path: "/compare",
+      component: CompareView,
+      meta: {requiresAuth: true}, // only signed in users can access
     },
     {
       path: '/:catchAll(.*)', // unknown routes
