@@ -22,11 +22,11 @@ const router = createRouter({
       component: DashboardView,
       meta: { requiresAuth: true }, // only signed in users can access
     },
-    {
-      path: "/compare",
-      component: CompareView,
-      meta: {requiresAuth: true}, // only signed in users can access
-    },
+    // {
+    //   path: "/compare",
+    //   component: CompareView,
+    //   meta: {requiresAuth: true}, // only signed in users can access
+    // },
     {
       path: '/:catchAll(.*)', // unknown routes
       redirect: '/dashboard',     // go to /dashboard

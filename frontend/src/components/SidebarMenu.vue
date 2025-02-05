@@ -7,11 +7,11 @@
         </div>
       </router-link></li>
 
-      <li><router-link to="/compare">
+      <!-- <li><router-link to="/compare">
         <div class="icon-wrapper">
           <img src="/src/icons/compare_dark.svg" alt="compare">
         </div>
-      </router-link></li>
+      </router-link></li> -->
 
       <li><router-link to="/logout">
         <div class="icon-wrapper">

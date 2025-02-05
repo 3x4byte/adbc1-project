@@ -21,5 +21,9 @@
   --vs-dropdown-option--active-bg: var(--color-background-mute);
   --vs-dropdown-option--active-color: var(--color-heading);
   
+  --vs-disabled-bg: var(--color-background-mute);
 }
 
+.vs--disabled{
+  opacity: 0.5;
+}
