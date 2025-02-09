@@ -124,12 +124,24 @@ export default {
       let espId = this.espMailIdMap[this.selectedEsp]
 
       let list = []
+
+      let _labels = [];
+      let _temperatures = [];
+      let _humidities = [];
+      let _airPressures = [];
+        
       try {
         if(this.selectedDataType === "Detailed"){
           list = await this.$pb.collection("data").getFullList({
             filter: `created > '${formattedStart}' && created < '${formattedEnd}' && iot_user = '${espId}'`,
             sort: 'created'
           });
+          for (let item of list) {
+          _labels.push(item.created)
+          _temperatures.push(item.temperature)
+          _humidities.push(item.humidity)
+          _airPressures.push(item.air_pressure)
+        }
         }else{
           if(this.selectedDataType === "Balanced"){
             list = await this.$pb.collection('data_acc_hourly').getFullList({
@@ -143,18 +155,15 @@ export default {
               sort: 'org_time'
             });
           }
+
+          for (let item of list) {
+            _labels.push(item.org_time)
+            _temperatures.push(item.temperature)
+            _humidities.push(item.humidity)
+            _airPressures.push(item.air_pressure)
+          }
         }
         
-        let _labels = [];
-        let _temperatures = [];
-        let _humidities = [];
-        let _airPressures = [];
-        for (let item of list) {
-          _labels.push(item.created)
-          _temperatures.push(item.temperature)
-          _humidities.push(item.humidity)
-          _airPressures.push(item.air_pressure)
-        }
         return {labels: _labels, temperatures: _temperatures, humidities: _humidities, airPressures: _airPressures}
       } catch (error){
         console.error("Error fetching data:", error)
